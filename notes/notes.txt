@@ -1,0 +1,4 @@
+778441 Large HMS may require long metastore upgrade process requiring CM process step timeout to be increased - add CMF_JAVA_OPTS= .... -Dcom.cloudera.cmf.service.AbstractCommandHandler.WORKAROUND_TIMEOUT_INTERVAL=1800 /etc/default/cloudera-scm-server and restart cm server
+
+hive-sre
+Ingest cluster - alter tables 10k/min

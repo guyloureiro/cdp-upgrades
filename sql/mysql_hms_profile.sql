@@ -13,7 +13,7 @@ select count(*) from DBS;
 -- breakdown of Hive table types: MANAGED, EXTERNAL, VIEW
 select tbl_type, count(*) from TBLS group by tbl_type;
 
--- Table properties x table type
+-- Shows the number of transactional ACID tables - showing count of transactional tables x table type
 select t.tbl_type, tp.param_value, count(*) from TBLS t join TABLE_PARAMS tp on t.tbl_id = tp.tbl_id where lower(tp.param_key) = 'transactional' group by t.tbl_type, tp.param_value;
 
 -- SERDE queries
@@ -25,7 +25,7 @@ select t.tbl_type, se.slib, count(*) from TBLS t join SDS s on (t.sd_id = s.sd_i
 -- checks if event notifications logs are in play - could point to Hive DLM - caveat DLM/Hive replication functionality not yet available
 select count(*) from NOTIFICATION_LOG;
 
--- old std SQL authorization model - now use Ranger
+-- old std SQL authorization model - now use Ranger - caveat - hive.privilege.synchronizer syncs Ranger rules into the xxxx_PRIVS HMS tables - can be very large
 select count(*) from ROLES;
 
 -- #UDFs - these might need testing during upgrade

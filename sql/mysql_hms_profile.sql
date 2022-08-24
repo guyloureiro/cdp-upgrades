@@ -14,7 +14,7 @@ select count(*) from DBS;
 select tbl_type, count(*) from TBLS group by tbl_type;
 
 -- Table properties x table type
-select t.tbl_type, count(*) from TBLS t join TABLE_PARAMS tp on t.tbl_id = tp.tbl_id where lower(tp.param_key) = 'transactional' group by t.tbl_type;
+select t.tbl_type, tp.param_value, count(*) from TBLS t join TABLE_PARAMS tp on t.tbl_id = tp.tbl_id where lower(tp.param_key) = 'transactional' group by t.tbl_type, tp.param_value;
 
 -- SERDE queries
 -- #File types x table type
